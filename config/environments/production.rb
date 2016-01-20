@@ -4,7 +4,7 @@ Rails.application.configure do
   config.serve_static_assets = true
   config.assets.initialize_on_precompile = false
   config.action_mailer.delivery_method = :smtp 
-  host = 'infinite-island-1726.herokuapp.com'
+  host = 'evening-cove-51018.herokuapp.com'
   config.action_mailer.default_url_options = { host: host }
 
   ActionMailer::Base.smtp_settings = {
