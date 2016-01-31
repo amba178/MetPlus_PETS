@@ -77,7 +77,37 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.delivery_method = :sendmail
+  # config.action_mailer.delivery_method = :sendmail
   #this will take care of devise setup default url in production
-  config.action_mailer.default_url_options = { :host => 'metplus.org' }
+  # config.action_mailer.default_url_options = { :host => 'metplus.org' }
+
+
+
+  # Heroku emailing setup 
+
+
+  # email setup, salem's version 
+  host = 'pets-dev.herokuapp.com'
+  # config.action_mailer.default_url_options = { :host => host}
+  # ActionMailer Config
+  # Setup for production - deliveries, no errors raised
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
+
+  config.action_mailer.default_url_options = { :host => host}
+
+  config.action_mailer.delivery_method = :smtp
+
+  config.action_mailer.smtp_settings = {
+    address: "smtp.sendgrid.net",
+    port: 25,
+    domain: "heroku.com", 
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"]
+   }
+
 end 
