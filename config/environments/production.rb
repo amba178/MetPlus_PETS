@@ -84,7 +84,7 @@ Rails.application.configure do
 
   # email setup, salem's version 
   host = 'sheltered-shore-82235.herokuapp.com'
-  config.action_mailer.default_url_options = { :host => host}
+  # config.action_mailer.default_url_options = { :host => host}
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
@@ -92,7 +92,19 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
 
-  
+  config.action_mailer.default_url_options = { :host =&gt; host}
+
+config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
+    address: "smtp.sendgrid.net",
+    port: 25,
+    domain: "heroku.com", 
+    authentication: "plain",
+    enable_starttls_auto: true,
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"]
+  }
 
 
 end 
