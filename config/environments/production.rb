@@ -83,7 +83,8 @@ Rails.application.configure do
 
 
   # email setup, salem's version 
-  config.action_mailer.default_url_options = { :host => 'example.com' }
+  host = 'sheltered-shore-82235.herokuapp.com'
+  config.action_mailer.default_url_options = { :host => host}
   # ActionMailer Config
   # Setup for production - deliveries, no errors raised
   config.action_mailer.delivery_method = :smtp
@@ -100,5 +101,5 @@ Rails.application.configure do
       user_name: ENV["GMAIL_USERNAME"],
       password: ENV["GMAIL_PASSWORD"]
     }
-    
+
 end 
