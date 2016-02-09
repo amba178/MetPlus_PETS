@@ -1,7 +1,7 @@
 -provide(:title, @job.title)
 %div{class: "col-sm-offset-3 col-sm-6"}
 	%div{class: "pull-right", id: "job-show-links-id"}
-		=link_to "Delete", '#'
+		=link_to "Delete", job_path(@job), method: :delete 
 		|
 		=link_to "Edit Job", edit_job_path(@job)
 		|
@@ -35,7 +35,7 @@
 			%tr 
 				%td Job Details: 
 				%td=@job.description
-	=link_to "Click Here To Apply Online", '#', class: "col-sm-offset-4"
+	=link_to "Click Here To Apply Online", '#', class: "col-sm-offset-4", id: "apply-online-link-id"
 
 
 		
