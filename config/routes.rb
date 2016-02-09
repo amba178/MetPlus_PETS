@@ -51,7 +51,8 @@ Rails.application.routes.draw do
                        only: [:show, :edit, :update, :destroy]
   # --------------------------------------------------------------------------
 
-  root 'main#index'
+  # root 'main#index'
+  root 'jobs#index'
 
   get 'agency_admin/home', path: '/admin/agency_admin/home'
 
@@ -59,6 +60,7 @@ Rails.application.routes.draw do
 
   get 'company/home', path: '/company/:id'
 
+  resources :jobs 
   resources :job_seekers
 
    # The priority is based upon order of creation: first created -> highest priority.
